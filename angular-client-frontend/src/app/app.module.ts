@@ -7,11 +7,12 @@ import { HeaderComponent } from "./header/header.component";
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes} from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component'
 
 
 const routes: Routes = [
-  {path:'', redirectTo:'/clientes', pathMatch: 'full'},
+  {path:'', component: HomeComponent},
   {path:'clientes', component: ClientesComponent}
 ];
 
@@ -22,7 +23,8 @@ const routes: Routes = [
     AppComponent, 
     HeaderComponent,
     FooterComponent,
-    ClientesComponent
+    ClientesComponent,
+    HomeComponent
     
   ],
   imports: [
