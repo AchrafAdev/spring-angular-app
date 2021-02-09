@@ -5,6 +5,7 @@ import { from, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import Swal from 'sweetalert2';
 import{Router} from '@angular/router'
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable()
 export class ClienteService {
@@ -21,15 +22,21 @@ export class ClienteService {
   }
 
   create(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(this.urlEndPoint, cliente,{headers: this.httpHeaders})
+    return this.http.post<Cliente>(this.urlEndPoint, cliente,{headers: this.httpHeaders}).pipe(
+      catchError(e =>{
+        console.error(e.error.mensaje);
+        Swal.fire('Error al crear el cliente', e.error.message, 'error');
+        return throwError(e);
+      })
+    );
   }
 
   getCliente(id : Number): Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`).pipe(
       catchError(e => {
         this.router.navigate(['/clientes']);
-        console.log(e.error.mensaje);
-        Swal.fire('Error al editar', e.error.mensaje, 'error');
+        console.log(e.error.message);
+        Swal.fire('Error al editar', e.error.message, 'error');
         return throwError(e);
         
       })
@@ -43,4 +50,10 @@ export class ClienteService {
   delete(id : Number): Observable<Cliente> {
    return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`)
  }
+
+  redirect_404(){
+    if (this.router.url == "/clientes/") {
+      
+    }
+  }
 }

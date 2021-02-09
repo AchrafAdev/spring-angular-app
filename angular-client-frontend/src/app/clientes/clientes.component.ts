@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,9 +13,11 @@ import Swal from 'sweetalert2';
 export class ClientesComponent implements OnInit {
   clientes: Cliente[];
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(private clienteService: ClienteService, private router: Router) {}
 
   ngOnInit() {
+    this.clienteService.redirect_404();
+    console.log(this.router.url)
    this.clienteService.getClientes().subscribe(
     clientes => this.clientes = clientes
    );
@@ -29,6 +31,7 @@ export class ClientesComponent implements OnInit {
       },
       buttonsStyling: false
     })
+    
     
     swalWithBootstrapButtons.fire({
       title: 'Deseas eliminar al cliente?',

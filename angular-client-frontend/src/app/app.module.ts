@@ -17,7 +17,8 @@ const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'clientes', component: ClientesComponent},
   {path:'clientes/form', component: FormComponent},
-  {path:'clientes/form/:id', component: FormComponent}
+  {path:'clientes/form/:id', component: FormComponent},
+  {path:'clientes/:id', component: ClientesComponent}
 ];
 
 
