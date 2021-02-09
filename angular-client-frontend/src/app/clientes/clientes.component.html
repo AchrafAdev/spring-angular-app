@@ -5,6 +5,10 @@
       <div>
           <button class="btn btn-rounded btn-primary" type="button" routerLink="/clientes/form">Crear cliente</button>
       </div>
+
+      <div *ngIf="clientes?.legth == 0" class="alert alert-info">
+          No hay clientes registrados
+      </div>
      
       <table class="table table-bordered table-stripped">
           <thead>

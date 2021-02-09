@@ -17,6 +17,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarCliente()
+    console.log(this.cliente.id)
   }
 
   public create(): void{
@@ -43,9 +44,13 @@ export class FormComponent implements OnInit {
       if(id){
         this.clienteService.getCliente(id).subscribe(
           response => this.cliente = response
+     
         )
+       
       }
     })
+
+
   
   }
 
