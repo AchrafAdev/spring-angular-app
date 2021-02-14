@@ -23,3 +23,11 @@ INSERT INTO clientes (nombre, apellido, email, create_at ) VALUES('John', 'Smith
 INSERT INTO clientes (nombre, apellido, email, create_at ) VALUES('Joe', 'Bloggs', 'joe.bloggs@gmail.com', '2017-08-23');
 INSERT INTO clientes (nombre, apellido, email, create_at ) VALUES('John', 'Stiles', 'john.stiles@gmail.com', '2017-08-24');
 INSERT INTO clientes (nombre, apellido, email, create_at ) VALUES('Richard', 'Roe', 'stiles.roe@gmail.com', '2017-08-25');
+
+/* Creamos algunos usuarios con sus roles */
+INSERT INTO `users` (username, password, enabled, email) VALUES ('achraf','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG',1,'achraf@gmail.com');
+INSERT INTO `users` (username, password, enabled, email) VALUES ('admin','$2a$10$DOMDxjYyfZ/e7RcBfUpzqeaCs8pLgcizuiQWXPkU35nOhZlFcE9MS',1,'admin@gmail.com');
+
+INSERT INTO `authorities` (user_id, authority) VALUES (1,'ROLE_USER');
+INSERT INTO `authorities` (user_id, authority) VALUES (1,'ROLE_ADMIN');
+INSERT INTO `authorities` (user_id, authority) VALUES (2,'ROLE_ADMIN');

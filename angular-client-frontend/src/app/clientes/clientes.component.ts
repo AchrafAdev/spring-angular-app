@@ -16,8 +16,8 @@ export class ClientesComponent implements OnInit {
   constructor(private clienteService: ClienteService, private router: Router) {}
 
   ngOnInit() {
-    this.clienteService.redirect_404();
-    console.log(this.router.url)
+   this.clienteService.redirect_404();
+   console.log(this.router.url)
    this.clienteService.getClientes().subscribe(
     clientes => this.clientes = clientes
    );

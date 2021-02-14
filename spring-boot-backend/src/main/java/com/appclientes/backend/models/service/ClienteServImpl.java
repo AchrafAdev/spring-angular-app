@@ -30,7 +30,6 @@ public class ClienteServImpl implements IClienteServ {
 
 	@Override
 	@Transactional
-	
 	public Cliente save(Cliente cliente) {
 
 		return clienteDao.save(cliente);

@@ -52,8 +52,11 @@ export class ClienteService {
  }
 
   redirect_404(){
-    if (this.router.url == "/clientes/") {
-      
+    let reg = new RegExp('^[0-9]+$');
+    let urlBanned = this.router.url.split("/");
+    if (urlBanned.length == 3 && urlBanned[2].match(reg)) {
+      this.router.navigate(['/clientes']);
+      Swal.fire('Error al acceder','Esa funcionalidad aun no se encuentra disponible', 'error');
     }
   }
 }
